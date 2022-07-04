@@ -37,6 +37,7 @@ void delete_contact(vector<contact> &contacts){
 	cout << "Enter index of contact to delete: ";
 	cin >> index;
 	contacts.erase(contacts.begin() + index);
+	cout<<"Contact deleted successfully"<<endl;
 }
 
 void contact_amount(vector<contact> &contacts){
@@ -50,6 +51,7 @@ int main(){
 	while(1){
 		cout << "1. Add contact" << endl;
 		cout << "2. Delete contact" << endl;
+        cout << "3. Edit contact" <<endl;
 		cout << "3. Print contact list" << endl;
 		cout << "4. Print contact amount" << endl;
         cout << "5. To Save contact in txt file" << endl;
@@ -63,16 +65,28 @@ int main(){
 			case 2:
 				delete_contact(contacts);
 				break;
-			case 3:
+            case 3:
+            int edit;
+            cout<<"Enter index of contact to edit: ";
+            cin>>edit;
+            cout<<"Enter new name: ";
+            cin>>contacts[edit].name;
+            cout<<"Enter new phone: ";
+            cin>>contacts[edit].phone;
+            cout<<"Enter new email: ";
+            cin>>contacts[edit].email;
+            cout<<"Contact edited successfully"<<endl;
+            break;
+			case 4:
 				for(int i = 0; i < contacts.size(); i++){
 					cout<<"\nContact "<<i+1<<endl;
 					contacts[i].print();
 				}
 				break;
-			case 4:
+			case 5:
 				contact_amount(contacts);
 				break;
-            case 5:
+            case 6:
                 out.open("contact_list.txt");
                 for(int i = 0; i < contacts.size(); i++){
                     out<<"Contact "<<i+1<<" ="<<endl;
@@ -82,7 +96,7 @@ int main(){
                 }
                 cout<<"Contact list saved in contact_list.txt"<<endl<<endl;
                 break;
-			case 6:
+			case 7:
 				return 0;
 				break;
 			default:
